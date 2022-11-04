@@ -3,10 +3,11 @@ package wjm.wjmproject.controller;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
+@RequestMapping("/api")
 public class PingController {
 
-    @RequestMapping(value = "/test/{user}", method = RequestMethod.POST)
-    public String Ping(@PathVariable String user){
-        return user;
+    @PostMapping("/intro")
+    public String postMethod(@RequestBody String id){
+        return id + "님 환영합니다!";
     }
 }
