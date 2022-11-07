@@ -25,8 +25,8 @@ public class RestaurantResponse {
         response.restaurantId = restaurant.getId();
         response.name = restaurant.getName();
         response.area = restaurant.getArea();
-        response.address = response.getAddress();
-        response.keyword = response.getKeyword();
+        response.address = restaurant.getAddress();
+        response.keyword = restaurant.getKeyword();
         return response;
     }
 }
