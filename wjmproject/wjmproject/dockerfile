@@ -1,0 +1,6 @@
+FROM openjdk:17-ea-11-jdk-slim
+
+VOLUME /tmp
+COPY build/libs/wjmproject-0.0.1-SNAPSHOT.jar wjmproject.jar
+
+ENTRYPOINT ["java","-jar","wjmproject.jar"]
