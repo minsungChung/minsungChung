@@ -1,21 +1,36 @@
 package wjm.wjmproject.domain;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
-import lombok.Setter;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
 @Entity
-@Getter @Setter
+@Getter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Restaurant {
-    @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "restaurant_id")
     private Long id;
-    @Column(name = "name")
-    private String restaurant_name;
-    @Column(name = "area")
+
+    private String name;
+
     private String area;
-    @Column(name = "address")
+
     private String address;
-    @Column(name = "keywords")
-    private String keywords;
+
+    private String keyword;
+
+    public static Restaurant createRestaurant(String name, String area, String address, String keyword) {
+        Restaurant restaurant = new Restaurant();
+        restaurant.name = name;
+        restaurant.area = area;
+        restaurant.address = address;
+        restaurant.keyword = keyword;
+        return restaurant;
+    }
 }
