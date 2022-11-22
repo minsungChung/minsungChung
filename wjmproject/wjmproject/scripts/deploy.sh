@@ -1,15 +1,13 @@
 #!/usr/bin/env bash
 
-RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://3.37.178.135/profile)
-# RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" http://localhost/profile) https 적용 X
+RESPONSE_CODE=$(curl -s -o /dev/null -w "%{http_code}" https://wjm.potados.com/profile)
 
 echo "> 응답 코드 $RESPONSE_CODE"
 if [ $RESPONSE_CODE -ge 400 ]
 then
     CURRENT_PORT=8082
 else
-    CURRENT_PORT=$(curl -s http://3.37.178.135/profile)
-	  # CURRENT_PORT=$(curl -s http://localhost/profile) https 적용 X
+    CURRENT_PORT=$(curl -s https://wjm.potados.com/profile)
 fi
 
 echo "> 현재 구동중인 포트 $CURRENT_PORT"
@@ -50,9 +48,9 @@ do
       echo "> Health check 성공"
       echo "> 전환할 Port: $IDLE_PORT"
       echo "> Port 전환"
-      echo "set \$service_url http://127.0.0.1:${IDLE_PORT};" | sudo tee /etc/nginx/conf.d/service-url.inc
-      echo "> 엔진엑스 Reload"
-      sudo service nginx reload
+      sudo sed -i "s/${CURRENT_PORT}/${IDLE_PORT}/g" /etc/caddy/Caddyfile
+      echo "> Caddy Reload"
+      sudo service caddy reload
       break
   else
       echo "> Health check의 응답을 알 수 없거나 혹은 실행 상태가 아닙니다."
