@@ -15,4 +15,4 @@
 ![SALESFORCE](https://img.shields.io/badge/Salesforce-00A1E0.svg?&style=for-the-badge&logo=Salesforce&logoColor=white)
 
 # :mailbox_with_mail: Contacts
-![Tech Blog Badge](http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=[https://m1ndy5.tistory.com/](https://m1ndy5.tistory.com/))
+[![Tech Blog Badge](http://img.shields.io/badge/-Tech%20blog-black?style=flat-square&logo=github&link=https://m1ndy5.tistory.com/)](https://m1ndy5.tistory.com/)
